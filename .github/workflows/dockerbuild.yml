@@ -4,12 +4,6 @@ permissions:
   packages: write
 
 on:
-  workflow_dispatch:
-    inputs:
-      tags:
-        description: 'Manual supplied image tag like 1.16.0'
-        required: true
-        type: string
   push:
     tags:
       - "*.*.*"
@@ -24,20 +18,20 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
+          flavor: |
+            latest=false
           images: |
             ghcr.io/${{ github.repository }}/mapproxy
           tags: |
             type=semver,pattern={{version}}
-
-      - name: Get tag
-        id: tag
-        run: >-
-          echo "tag=$(
-            echo ${{ inputs.tags }} || echo ${{ steps.meta.outputs.tags }}  
-          )" >> $GITHUB_OUTPUT
+            type=semver,pattern={{version}}-dev
+            type=semver,pattern={{version}}-nginx
+            type=semver,pattern={{version}}-alpine
+            type=semver,pattern={{version}}-alpine-dev
+            type=semver,pattern={{version}}-alpine-nginx
 
       - name: Show tag
-        run: echo ${{ steps.tag.outputs.tag }}
+        run: echo "${{ fromJSON(steps.meta.json).tags[0] }}"
 
 #      - name: Set up QEMU
 #        uses: docker/setup-qemu-action@v3
