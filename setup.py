@@ -61,7 +61,7 @@ def long_description(changelog_releases=10):
 
 
 setup(
-    name='MapProxy',
+    name='MapProxyTest',
     version="2.0.2",
     description='An accelerating proxy for tile and web map services',
     long_description=long_description(7),
