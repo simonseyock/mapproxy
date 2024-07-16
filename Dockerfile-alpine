@@ -81,7 +81,7 @@ USER root:root
 RUN apk --no-cache add ca-certificates uwsgi uwsgi-python3 supervisor pcre-dev && \
   rm -rf /var/cache/apk/*
 
-RUN apk --no-cache add build-base linux-headers openssl-dev wget zlib-dev && \
+RUN apk --no-cache add build-base linux-headers openssl-dev wget zlib-dev libffi-dev && \
   su mapproxy -c "pip install uwsgi" && \
   cd /tmp && \
   wget https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
