@@ -7,7 +7,11 @@ module = "mapproxy.*"
 ignore_errors = true
 
 [[tool.mypy.overrides]]
-module = "mapproxy.service.*"
+module = [
+    "mapproxy.service.*",
+    "mapproxy.source.*",
+    "mapproxy.cache.*"
+]
 ignore_errors = false
 
 [tool.pytest.ini_options]

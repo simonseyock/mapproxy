@@ -23,6 +23,8 @@ import re
 import threading
 import time
 
+from service.base import Server
+
 try:
     # time.strptime is thread-safe, but not the first call.
     # Import _strptime as a workaround. See: http://bugs.python.org/issue7980
@@ -125,7 +127,7 @@ class MapProxyApp(object):
     """
     handler_path_re = re.compile(r'^/(\w+)')
 
-    def __init__(self, services, base_config):
+    def __init__(self, services: list[Server], base_config):
         self.handlers = {}
         self.base_config = base_config
         self.cors_origin = base_config.http.access_control_allow_origin

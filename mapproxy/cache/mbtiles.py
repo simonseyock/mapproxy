@@ -20,6 +20,7 @@ import threading
 import time
 from io import BytesIO
 from itertools import groupby
+from typing import AnyStr, cast
 
 from mapproxy.image import ImageSource
 from mapproxy.cache.base import TileCacheBase, tile_buffer, REMOVE_ON_UNLOCK
@@ -32,7 +33,10 @@ log = logging.getLogger(__name__)
 
 if not hasattr(glob, 'escape'):
     import re
-    glob.escape = lambda pathname: re.sub(r'([*?[])', r'[\1]', pathname)
+    def escape_str(pathname: str) -> str:
+        return re.sub(r'([*?[])', r'[\1]', pathname)
+
+    glob.escape = escape_str  # type: ignore[assignment]
 
 
 def sqlite_datetime_to_timestamp(datetime):

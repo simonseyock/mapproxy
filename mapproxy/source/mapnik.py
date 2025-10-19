@@ -32,12 +32,11 @@ from mapproxy.util.py import reraise_exception
 from mapproxy.util.async_ import run_non_blocking
 
 try:
-    import mapnik
-    mapnik
+    import mapnik  # type: ignore
 except ImportError:
     try:
         # for 2.0 alpha/rcs and first 2.0 release
-        import mapnik2 as mapnik
+        import mapnik2 as mapnik  # type: ignore
     except ImportError:
         mapnik = None
 

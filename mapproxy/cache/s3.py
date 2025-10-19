@@ -27,8 +27,8 @@ from mapproxy.util.py import reraise_exception
 from urllib import request as urllib2
 
 try:
-    import boto3
-    import botocore
+    import boto3  # type: ignore
+    import botocore  # type: ignore
 except ImportError:
     boto3 = None
 
