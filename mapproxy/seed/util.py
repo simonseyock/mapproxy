@@ -27,7 +27,7 @@ try:
 except ImportError:
     import pickle
 
-from mapproxy.layer import map_extent_from_grid
+from mapproxy.extent import map_extent_from_grid
 from mapproxy.util.fs import write_atomic
 
 import logging

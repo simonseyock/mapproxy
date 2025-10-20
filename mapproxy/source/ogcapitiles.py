@@ -24,10 +24,9 @@ from mapproxy.grid.tile_grid import tile_grid_from_ogc_tile_matrix_set
 from mapproxy.image.opts import ImageOptions
 from mapproxy.layer import (
     BlankImage,
-    MapExtent,
-    DefaultMapExtent,
     MapLayer,
 )
+from mapproxy.extent import MapExtent, DefaultMapExtent
 from mapproxy.source import SourceError, InvalidSourceQuery
 from mapproxy.srs import ogc_crs_url_to_auth_code
 from mapproxy.util.py import reraise_exception

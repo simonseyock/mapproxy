@@ -26,10 +26,11 @@ import yaml
 from mapproxy.srs import SRS
 from mapproxy.config.coverage import load_coverage
 from mapproxy.config.loader import (
-    load_configuration, ConfigurationError,
-    CacheConfiguration, GridConfiguration,
-    ProxyConfiguration
+    load_configuration, ConfigurationError
 )
+from mapproxy.config.configuration.cache import CacheConfiguration
+from mapproxy.config.configuration.grid import GridConfiguration
+from mapproxy.config.configuration.proxy import ProxyConfiguration
 from mapproxy.util.coverage import BBOXCoverage
 from mapproxy.seed.util import ProgressLog, format_bbox
 from mapproxy.seed.seeder import SeedTask, seed_task
